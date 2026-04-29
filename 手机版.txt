@@ -1,0 +1,44 @@
+// ==UserScript==
+// @name         ASMR视频转音频播放（手机版）
+// @namespace    https://example.com/
+// @match        *://*/*
+// @version      1.0
+// @description  一键隐藏视频画面，只播放声音
+// @author       助手
+// @grant        none
+// @run-at       document-end
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // 创建按钮（底部居中，手机友好）
+    let btn = document.createElement("button");
+    btn.innerText = "纯音频模式";
+    btn.style.position = "fixed";
+    btn.style.bottom = "30px";
+    btn.style.left = "50%";
+    btn.style.transform = "translateX(-50%)";
+    btn.style.zIndex = "9999999";
+    btn.style.padding = "12px 24px";
+    btn.style.borderRadius = "50px";
+    btn.style.background = "#6366f1";
+    btn.style.color = "#fff";
+    btn.style.border = "none";
+    btn.style.fontSize = "16px";
+    document.body.appendChild(btn);
+
+    let hidden = false;
+
+    // 点击隐藏/显示视频
+    btn.onclick = function() {
+        let videos = document.querySelectorAll("video");
+        hidden = !hidden;
+
+        videos.forEach(v => {
+            v.style.display = hidden ? "none" : "block";
+        });
+
+        btn.innerText = hidden ? "恢复画面" : "纯音频模式";
+    };
+})();
