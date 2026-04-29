@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "ASMR视频转音频播放",
+  "version": "1.0.0",
+  "description": "迷你悬浮窗，隐藏视频仅播放音频",
+  "permissions": ["activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}
